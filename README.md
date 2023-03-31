@@ -15,9 +15,14 @@ Use the GPIO of a Raspberry Pi to send wiegand data to a physical access control
 
 1. Raspberry Pi Zero W, 1A+, 1B+, 2B, 3A+, 3B, 3B+, 4B (wired ethernet prefered)
 2. Jumper wires to connect the GPIO
+3. Physical access control system controller
 
-## Todo
+## ToDo:
 
+* Additional card formats
+  * Raw 32-bit
+  * HID Corporate 1000 35-bit
+  * HID Corporate 1000 48-bit
 * Support for multiple virtual readers
 * Support for other access control I/O
   * Door Contact
