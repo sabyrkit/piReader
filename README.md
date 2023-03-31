@@ -1,6 +1,8 @@
 # piReader
 Use the GPIO of a Raspberry Pi to send wiegand data to a physical access control system (PACS).
 
+![alt text](https://github.com/sabyrkit/piReader/blob/main/piReader.jpg?raw=true)
+
 ## Supported card formats
 
 * Standard 26-bit
