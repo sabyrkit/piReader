@@ -19,6 +19,8 @@ Use the GPIO of a Raspberry Pi to send wiegand data to a physical access control
 
 ## ToDo:
 
+* Package for production
+  * Currently using Flask development server.
 * Additional card formats
   * Raw 32-bit
   * HID Corporate 1000 35-bit
