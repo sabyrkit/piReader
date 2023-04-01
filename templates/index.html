@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Reader 1</title>
+	<title>{{ readerHeader }}</title>
 	<link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
 </head>
 <body>
 	<div class="container">
-		<div class="header">Reader 1</div>
+		<div class="header">{{ readerHeader }}</div>
         <form class="form" method="post">
 			<input type="hidden" id="H10301form" type="text" name="formID" value="H10301form">
 			<input type="number" name="facilityCode26" placeholder="Facility Code" class="textbox" value="{{ request.form['facilityCode26'] }}">
@@ -25,57 +25,5 @@
 			<button class="submit">HID H10304<br />37-bits</button>
 		</form>
 	</div>
-	<div class="container">
-		<div class="header">Fixed Cards</div>
-		<div class="row">
-			<form class="row" method="post">
-				<input type="hidden" type="text" name="formID" value="12006270498">
-				<button class="leftButton">Send 37-bit:<br />12006270498</button>
-			</form>
-			<form class="row" method="post">
-				<input type="hidden" type="text" name="formID" value="12006270499">
-				<button class="rightButton">Send 37-bit:<br />12006270499</button>
-			</form>
-		</div>
-		<div class="row">
-			<form class="row" method="post">
-				<input type="hidden" type="text" name="formID" value="1554/245645">
-				<button class="leftButton">Send 37-bit:<br />1554/245645</button>
-			</form>
-			<form class="row" method="post">
-				<input type="hidden" type="text" name="formID" value="22/205">
-				<button class="rightButton">Send 26-bit:<br />22/205</button>
-			</form>
-		</div>
-        <div class="row">
-            <button class="refresh" onclick="clearForm">Clear</button>
-		</div>
-	</div>
-	<div class="container">
-		<div class="header">Special</div>
-		<div class="row">
-			<form class="row" method="post">
-				<input type="hidden" type="text" name="formID" value="multi37Bit">
-				<button class="leftButton">Send 37-bit:<br />12006270495-499</button>
-			</form>
-			<form class="row" method="post">
-				<input type="hidden" type="text" name="formID" value="26bit5x">
-				<button class="rightButton">Send 37-bit:<br />12006270498 5x</button>
-			</form>
-		</div>
-		<div class="row">
-			<form class="row" method="post">
-				<input type="hidden" type="text" name="formID" value="random37Bit">
-				<button class="leftButton">Send Random<br />H10302 37-bit</button>
-			</form>
-		</div>
-	</div>
 </body>
 </html>
-<script>
-	function clearForm() {
-		document.getElementbyId("H10301form").reset();
-		document.getElementbyId("H10302form").reset();
-		document.getElementbyId("H10304form").reset();
-	}
-</script>
