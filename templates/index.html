@@ -7,23 +7,26 @@
 <body>
 	<div class="container">
 		<div class="header">{{ readerHeader }}</div>
-        <form class="form" method="post">
-			<input type="hidden" id="H10301form" type="text" name="formID" value="H10301form">
-			<input type="number" name="facilityCode26" placeholder="Facility Code" class="textbox" value="{{ request.form['facilityCode26'] }}">
-			<input type="number" name="cardNumber26" placeholder="Card Number" class="textbox" value="{{ request.form['cardNumber26'] }}">
-			<button class="submit">Standard<br />26-bits</button>
-		</form>
-		<form class="form" method="post">
-			<input type="hidden" id="H10302form" type="text" name="formID" value="H10302form">
-			<input type="number" name="cardNumberH10302" placeholder="Card Number" class="textbox" value="{{ request.form['cardNumberH10302'] }}">
-			<button class="submit">HID H10302<br />37-bits</button>
-        </form>
-		<form class="form" method="post">
-			<input type="hidden" id="H10304form" type="text" name="formID" value="H10304form">
-			<input type="number" name="facilityCodeH10304" placeholder="Facility Code" class="textbox" value="{{ request.form['facilityCodeH10304'] }}">
-			<input type="number" name="cardNumberH10304" placeholder="Card Number" class="textbox" value="{{ request.form['cardNumberH10304'] }}">
-			<button class="submit">HID H10304<br />37-bits</button>
-		</form>
+        <div class="row">
+			<form class="row" method="post">
+				<input type="hidden" type="text" name="formID" value="Reader1">
+				<button class="leftButton">Reader 1</button>
+			</form>
+			<form class="row" method="post">
+				<input type="hidden" type="text" name="formID" value="Reader2">
+				<button class="rightButton">Reader 2</button>
+			</form>
+		</div>
+		<div class="row">
+			<form class="row" method="post">
+				<input type="hidden" type="text" name="formID" value="Reader3">
+				<button class="leftButton">Reader 3</button>
+			</form>
+			<form class="row" method="post">
+				<input type="hidden" type="text" name="formID" value="Reader4">
+				<button class="rightButton">Reader 4</button>
+			</form>
+		</div>
 	</div>
 </body>
 </html>

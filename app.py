@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 import piReader
 import time
 import random
@@ -51,10 +51,16 @@ def formProcessing(vReader):
 
 @app.route('/', methods=('GET', 'POST'))
 def index():
-    # vReader = piReader.Reader1
     if request.method == 'POST':
-        formProcessing(piReader.Reader1)
-    return render_template('index.html', readerHeader='Reader 1')
+        if request.form['formID'] == 'Reader1':
+            return redirect(url_for('reader1'))
+        elif request.form['formID'] == 'Reader2':
+            return redirect(url_for('reader2'))
+        elif request.form['formID'] == 'Reader3':
+            return redirect(url_for('reader3'))
+        elif request.form['formID'] == 'Reader4':
+            return redirect(url_for('reader4'))
+    return render_template('index.html', readerHeader='Choose a Reader')
 
 @app.route('/reader1', methods=('GET', 'POST'))
 def reader1():
