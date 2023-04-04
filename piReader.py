@@ -1,5 +1,4 @@
 
-# import sys
 import RPi.GPIO as GPIO
 import time
 
@@ -21,10 +20,6 @@ class Reader:
         self.pin1 = pin1
         GPIO.setup(self.pin1, GPIO.OUT)
         GPIO.output(pin1, GPIO.HIGH)
-        # self.led = led
-        # GPIO.setup(led, GPIO.IN)
-        # self.buz = buz
-        # GPIO.setup(buz, GPIO.IN)
 
 def _sum(arr):              # Funtion used to sum parity bits
     sum = 0
@@ -35,8 +30,6 @@ def _sum(arr):              # Funtion used to sum parity bits
 
 def sendData(binArrayb, readerPort):
     pulseTime = .00005      # Set the pulse time, typical 100 micro seconds
-    # print(binArrayb)
-    # print(f"{readerPort.pin0} and {readerPort.pin1}")
     if binArrayb == "":
         return
     else:
@@ -78,12 +71,9 @@ def sendH10301(facilityCode, cardNumber):
         return
     else:
         # Convert the card number to a binary array
-        # print(f"{facilityCode} is {bin(facilityCode)[2:].zfill(8)} in binary")
         binArray = [int(d) for d in str(bin(facilityCode))[2:].zfill(8)]
         
-        # print(f"{cardNumber} is {bin(cardNumber)[2:].zfill(16)} in binary")
         binArray = binArray + ([int(d) for d in str(bin(cardNumber))[2:].zfill(16)])
-        # print(binArray)
 
         # Calculate the EVEN parity bit
         # if first 12 bits are EVEN, parit is 0; if ODD, parity is 1
@@ -91,7 +81,6 @@ def sendH10301(facilityCode, cardNumber):
             evenParityBit = 0
         else:
             evenParityBit = 1
-        # print(f"Even parity sum is {_sum(binArray[:12])}. Set even parity to {evenParityBit}")
         
         # Calculate the ODD parity bit
         # if last 12 bits are ODD, parity is 0; if EVEN, parity is 1
@@ -99,11 +88,9 @@ def sendH10301(facilityCode, cardNumber):
             oddParityBit = 1
         else:
             oddParityBit = 0
-        # print(f"Odd parity sum is {_sum(binArray[13:])}. Set even parity to {oddParityBit}")
         # Add parity bits to the array
         binArray.insert(0, evenParityBit)
         binArray.append(oddParityBit)
-        # print(binArray)
         
     return(binArray)
 
@@ -130,9 +117,7 @@ def sendH10302(cardNumber):
         return
     else:
         # Convert the card number to a binary array
-        # print(f"{cardNumber} is {bin(cardNumber)[2:].zfill(35)} in binary")
         binArray = [int(d) for d in str(bin(cardNumber))[2:].zfill(35)]
-        # print(binArray)
 
         # Calculate the EVEN parity bit
         # if first 18 bits are EVEN, parit is 0; if ODD, parity is 1
@@ -140,7 +125,6 @@ def sendH10302(cardNumber):
             evenParityBit = 0
         else:
             evenParityBit = 1
-        # print(f"Even parity sum is {_sum(binArray[:18])}. Set even parity to {evenParityBit}")
         
         # Calculate the ODD parity bit
         # if last 18 bits are ODD, parity is 0; if EVEN, parity is 1
@@ -148,11 +132,9 @@ def sendH10302(cardNumber):
             oddParityBit = 1
         else:
             oddParityBit = 0
-        # print(f"Odd parity sum is {_sum(binArray[17:])}. Set even parity to {oddParityBit}")
         # Add parity bits to the array
         binArray.insert(0, evenParityBit)
         binArray.append(oddParityBit)
-        # print(binArray)
 
     return(binArray)
 
@@ -179,10 +161,8 @@ def sendH10304(facilityCode, cardNumber):
         print(f"Card Number too large")
     else:
         # Convert the card number to a binary array
-        # print(f"{facilityCode} is {bin(facilityCode)[2:].zfill(16)} in binary")
         binArray = [int(d) for d in str(bin(facilityCode))[2:].zfill(16)]
         
-        # print(f"{cardNumber} is {bin(cardNumber)[2:].zfill(19)} in binary")
         binArray = binArray + ([int(d) for d in str(bin(cardNumber))[2:].zfill(19)])
         # print(binArray)
 
@@ -192,7 +172,6 @@ def sendH10304(facilityCode, cardNumber):
             evenParityBit = 0
         else:
             evenParityBit = 1
-        # print(f"Even parity sum is {_sum(binArray[:18])}. Set even parity to {evenParityBit}")
         
         # Calculate the ODD parity bit
         # if last 18 bits are ODD, parity is 0; if EVEN, parity is 1
@@ -200,11 +179,9 @@ def sendH10304(facilityCode, cardNumber):
             oddParityBit = 1
         else:
             oddParityBit = 0
-        # print(f"Odd parity sum is {_sum(binArray[17:])}. Set even parity to {oddParityBit}")
         # Add parity bits to the array
         binArray.insert(0, evenParityBit)
         binArray.append(oddParityBit)
-        # print(binArray)
         
     return(binArray)
 
@@ -226,25 +203,6 @@ def sendRaw(cardNumber):
     return(binArray)
 
 Reader1 = Reader(16, 20)
-Reader2 = Reader(16, 20)
+Reader2 = Reader(19, 26)
 # Reader3 = Reader(16, 20)
 # Reader4 = Reader(16, 20)
-
-# sendData(sendH10302(12006270498), Reader1)
-
-# CardNumber = input("Please enter a H10302 card number:\n")
-# sendData(sendH10302(CardNumber), Reader1)
-
-# time.sleep(1)
-
-# FacilityCode = input("Please enter a H10304 facility code:\n")
-# CardNumber = input("Please enter a H10304 card number:\n")
-# # sendData(sendH10304(1554, 245645), Reader1)
-# sendData(sendH10304(FacilityCode, CardNumber), Reader1)
-
-# FacilityCode = input("Please enter a 26-bit facility code:\n")
-# CardNumber = input("Please enter a 26-bit card number:\n")
-# sendData(sendH10301(FacilityCode, CardNumber), Reader1)
-
-# CardNumber = input("Please enter a Raw card number:\n")
-# sendData(sendRaw(CardNumber), Reader1)

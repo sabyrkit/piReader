@@ -89,3 +89,6 @@ def reader4():
     if request.method == 'POST':
         formProcessing(piReader.Reader4)
     return render_template('vReader.html', readerHeader='Reader 4')
+
+if __name__ == '__main__':
+    app.run(host="0.0.0.0")
