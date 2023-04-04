@@ -24,7 +24,7 @@ $ pip install flask
 ```
 2. Clone the repository
 ```bash
-$ git clone https://github.com/sabyrkit/piReader.git
+git clone https://github.com/sabyrkit/piReader.git
 ```
 
 ## Usage
