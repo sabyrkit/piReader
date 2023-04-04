@@ -15,9 +15,20 @@ Use the GPIO of a Raspberry Pi to send wiegand data to a physical access control
 
 ## You will need:
 
-1. Raspberry Pi Zero W, 1A+, 1B+, 2B, 3A+, 3B, 3B+, 4B (wired ethernet prefered)
+1. Raspberry Pi with the 40-pin GPIO header. e.g. Zero W, 1A+, 1B+, 2B, 3A+, 3B, 3B+, 4B (wired ethernet prefered)
 2. Jumper wires to connect the GPIO
 3. Physical access control system controller
+
+## Installation
+
+1. Install the prerequisite software with [pip](https://docs.python.org/3/installing/index.html) (flask)
+  ```
+  $ pip install flask
+  ```
+2. Clone the repository
+  ```
+  $ git clone https://github.com/sabyrkit/piReader.git
+  ```
 
 ## ToDo:
 
