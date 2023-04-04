@@ -52,7 +52,7 @@ Now you can wire up the Pi to your access control system
 * The wiegand data signals are typically 5VDC. May need a level shifter to bring up the Pi's 3V3 signals to 5V. It's working fine with a Pi 3B wired directly to a Mercury EP1501. You're results may vary.
 * [Pi Pinout](https://pinout.xyz/)
 
-Now head over to http://localhost:5000/ or http://your_pi_ip:5000/
+Now head over to http://localhost:5000/ or http://your-pi-ip:5000/
 
 Select either Reader 1 or 2. The first section you can manually enter credential data for Standard 26-bit, HID H10302 37-bit, or HID H10304 37-bit. The next two sections are hard coded credentals.
 
