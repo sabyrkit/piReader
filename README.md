@@ -59,6 +59,7 @@ Select either Reader 1 or 2. The first section you can manually enter credential
 ## ToDo:
 
 * Additional card formats
+  * HID PINs
   * Raw 32-bit (partialy implemented)
   * HID Corporate 1000 35-bit
   * HID Corporate 1000 48-bit
