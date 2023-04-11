@@ -8,6 +8,7 @@ Use the GPIO of a Raspberry Pi to send [wiegand](https://en.wikipedia.org/wiki/W
 * Standard 26-bit
 * HID H10302 37-bit (no facility code)
 * HID H10304 37-bit (with facility code)
+* Wiegand PINs (4-bit burst)
 * More to come
 
 ## You will need:
@@ -59,7 +60,6 @@ Select either Reader 1 or 2. The first section you can manually enter credential
 ## ToDo:
 
 * Additional card formats
-  * HID PINs
   * Raw 32-bit (partialy implemented)
   * HID Corporate 1000 35-bit
   * HID Corporate 1000 48-bit

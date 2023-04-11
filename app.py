@@ -1,10 +1,12 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, session
 import piReader
 import time
 import random
 
 app = Flask(__name__)
 app.config['DEBUG'] = True
+
+app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
 def formProcessing(vReader):
     if request.form['formID'] == 'H10302form':
@@ -86,43 +88,50 @@ def index():
             return redirect(url_for('reader3'))
         elif request.form['formID'] == 'Reader4':
             return redirect(url_for('reader4'))
-        elif request.form['formID'] == 'pin':
-            return redirect(url_for('pin'))
     return render_template('index.html', readerHeader='Choose a Reader')
 
 @app.route('/reader1', methods=('GET', 'POST'))
 def reader1():
-    # vReader = piReader.Reader1
     if request.method == 'POST':
-        formProcessing(piReader.Reader1)
+        if request.form['formID'] == 'pin':
+            session['reader_var'] = 'reader1'
+            return redirect(url_for('pin'))
+        else:
+            formProcessing(piReader.Reader1)
     return render_template('vReader.html', readerHeader='Reader 1')
 
 @app.route('/reader2', methods=('GET', 'POST'))
 def reader2():
-    # vReader = piReader.Reader1
     if request.method == 'POST':
-        formProcessing(piReader.Reader2)
+        if request.form['formID'] == 'pin':
+            session['reader_var'] = 'reader2'
+            return redirect(url_for('pin'))
+        else:
+            formProcessing(piReader.Reader2)
     return render_template('vReader.html', readerHeader='Reader 2')
 
 @app.route('/reader3', methods=('GET', 'POST'))
 def reader3():
-    # vReader = piReader.Reader1
     if request.method == 'POST':
         formProcessing(piReader.Reader3)
     return render_template('vReader.html', readerHeader='Reader 3')
 
 @app.route('/reader4', methods=('GET', 'POST'))
 def reader4():
-    # vReader = piReader.Reader1
     if request.method == 'POST':
         formProcessing(piReader.Reader4)
     return render_template('vReader.html', readerHeader='Reader 4')
 
 @app.route('/pin', methods=('GET', 'POST'))
 def pin():
-    # vReader = piReader.Reader1
     if request.method == 'POST':
-        pinProcessing(piReader.Reader1)
+        reader_var = session.get('reader_var', None)
+        if request.form['formID'] == 'back':
+            return redirect(url_for(reader_var))
+        if reader_var == 'reader1':
+            pinProcessing(piReader.Reader1)
+        elif reader_var == 'reader2':
+            pinProcessing(piReader.Reader2)
     return render_template('pin.html', readerHeader='PIN')
 
 if __name__ == '__main__':
