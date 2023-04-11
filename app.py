@@ -49,6 +49,32 @@ def formProcessing(vReader):
         piReader.sendData(piReader.sendH10302(cn), vReader)
         print(cn)
 
+def pinProcessing(vReader):
+    if request.form['formID'] == 'button1':
+        piReader.sendData(piReader.sendPIN(1), vReader)
+    elif request.form['formID'] == 'button2':
+        piReader.sendData(piReader.sendPIN(2), vReader)
+    elif request.form['formID'] == 'button3':
+        piReader.sendData(piReader.sendPIN(3), vReader)
+    elif request.form['formID'] == 'button4':
+        piReader.sendData(piReader.sendPIN(4), vReader)
+    elif request.form['formID'] == 'button5':
+        piReader.sendData(piReader.sendPIN(5), vReader)
+    elif request.form['formID'] == 'button6':
+        piReader.sendData(piReader.sendPIN(6), vReader)
+    elif request.form['formID'] == 'button7':
+        piReader.sendData(piReader.sendPIN(7), vReader)
+    elif request.form['formID'] == 'button8':
+        piReader.sendData(piReader.sendPIN(8), vReader)
+    elif request.form['formID'] == 'button9':
+        piReader.sendData(piReader.sendPIN(9), vReader)
+    elif request.form['formID'] == 'button0':
+        piReader.sendData(piReader.sendPIN(0), vReader)
+    elif request.form['formID'] == 'button*':
+        piReader.sendData(piReader.sendPIN(10), vReader)
+    elif request.form['formID'] == 'button#':
+        piReader.sendData(piReader.sendPIN(11), vReader)
+
 @app.route('/', methods=('GET', 'POST'))
 def index():
     if request.method == 'POST':
@@ -60,6 +86,8 @@ def index():
             return redirect(url_for('reader3'))
         elif request.form['formID'] == 'Reader4':
             return redirect(url_for('reader4'))
+        elif request.form['formID'] == 'pin':
+            return redirect(url_for('pin'))
     return render_template('index.html', readerHeader='Choose a Reader')
 
 @app.route('/reader1', methods=('GET', 'POST'))
@@ -89,6 +117,13 @@ def reader4():
     if request.method == 'POST':
         formProcessing(piReader.Reader4)
     return render_template('vReader.html', readerHeader='Reader 4')
+
+@app.route('/pin', methods=('GET', 'POST'))
+def pin():
+    # vReader = piReader.Reader1
+    if request.method == 'POST':
+        pinProcessing(piReader.Reader1)
+    return render_template('pin.html', readerHeader='PIN')
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0")

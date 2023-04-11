@@ -202,6 +202,21 @@ def sendRaw(cardNumber):
     print(binArray)
     return(binArray)
 
+def sendPIN(cardNumber):
+    """
+    Send 4-bit PIN data
+    No parity
+    """
+    try:
+        isinstance(int(cardNumber), int)
+        cardNumber = int(cardNumber)
+    except:
+        print(f"Not an integer")
+        return
+    
+    binArray = [int(d) for d in str(bin(cardNumber))[2:].zfill(4)]
+    return(binArray)
+
 Reader1 = Reader(16, 20)
 Reader2 = Reader(19, 26)
 # Reader3 = Reader(16, 20)

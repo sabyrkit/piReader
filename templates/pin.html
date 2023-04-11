@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>{{ readerHeader }}</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
+</head>
+<body>
+	<div class="container">
+		<div class="header">{{ readerHeader }}</div>
+        <div class="row">
+			<form class="row" method="post">
+				<input type="hidden" type="text" name="formID" value="button1">
+				<button class="leftButton">1</button>
+			</form>
+			<form class="row" method="post">
+				<input type="hidden" type="text" name="formID" value="button2">
+				<button class="rightButton">2</button>
+			</form>
+            <form class="row" method="post">
+				<input type="hidden" type="text" name="formID" value="button3">
+				<button class="rightButton">3</button>
+			</form>
+		</div>
+		<div class="row">
+			<form class="row" method="post">
+				<input type="hidden" type="text" name="formID" value="button4">
+				<button class="leftButton">4</button>
+			</form>
+			<form class="row" method="post">
+				<input type="hidden" type="text" name="formID" value="button5">
+				<button class="rightButton">5</button>
+			</form>
+            <form class="row" method="post">
+				<input type="hidden" type="text" name="formID" value="button6">
+				<button class="rightButton">6</button>
+			</form>
+		</div>
+        <div class="row">
+			<form class="row" method="post">
+				<input type="hidden" type="text" name="formID" value="button7">
+				<button class="leftButton">7</button>
+			</form>
+			<form class="row" method="post">
+				<input type="hidden" type="text" name="formID" value="button8">
+				<button class="rightButton">8</button>
+			</form>
+            <form class="row" method="post">
+				<input type="hidden" type="text" name="formID" value="button9">
+				<button class="rightButton">9</button>
+			</form>
+		</div>
+        <div class="row">
+			<form class="row" method="post">
+				<input type="hidden" type="text" name="formID" value="button*">
+				<button class="leftButton">*</button>
+			</form>
+			<form class="row" method="post">
+				<input type="hidden" type="text" name="formID" value="button0">
+				<button class="rightButton">0</button>
+			</form>
+            <form class="row" method="post">
+				<input type="hidden" type="text" name="formID" value="button#">
+				<button class="rightButton">#</button>
+			</form>
+		</div>
+	</div>
+</body>
+</html>
