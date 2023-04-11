@@ -2,11 +2,12 @@ from flask import Flask, render_template, request, redirect, url_for, session
 import piReader
 import time
 import random
+import secrets
 
 app = Flask(__name__)
 app.config['DEBUG'] = True
 
-app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
+app.secret_key = secrets.token_hex()
 
 def formProcessing(vReader):
     if request.form['formID'] == 'H10302form':

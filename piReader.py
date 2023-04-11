@@ -187,8 +187,9 @@ def sendH10304(facilityCode, cardNumber):
 
 def sendRaw(cardNumber):
     """
-    Send raw data
-    No parity
+    Send raw 32-bit data
+    Typically found with Mifare Classic
+    Card Number: 32 bits, 0 to 4,294,967,295
     """
     try:
         isinstance(int(cardNumber), int)
@@ -206,6 +207,10 @@ def sendPIN(cardNumber):
     """
     Send 4-bit PIN data
     No parity
+    0 = 0000    4 = 0100    8 = 1000
+    1 = 0001    5 = 0101    9 = 1001
+    2 = 0010    6 = 0110    * = 1010
+    3 = 0011    7 = 0111    # = 1011
     """
     try:
         isinstance(int(cardNumber), int)
