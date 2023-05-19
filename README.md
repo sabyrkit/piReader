@@ -32,7 +32,7 @@ $ git clone https://github.com/sabyrkit/piReader.git
 
 You can use the flask developmental server
 ```bash
-$ flask --app ~/piReader/app run
+$ python ~/piReader/app.py
 ```
 
 Or you can use a production WSGI server such as [gunicorn](https://gunicorn.org/)
